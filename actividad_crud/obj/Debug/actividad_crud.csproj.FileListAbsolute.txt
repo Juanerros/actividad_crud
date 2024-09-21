@@ -1,0 +1,14 @@
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\bin\Debug\actividad_crud.exe.config
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\bin\Debug\actividad_crud.exe
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\bin\Debug\actividad_crud.pdb
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.csproj.AssemblyReference.cache
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.Form1.resources
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.Properties.Resources.resources
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.csproj.GenerateResource.cache
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.csproj.CoreCompileInputs.cache
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.exe
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.pdb
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formAgregar.resources
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formBorrar.resources
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formEditar.resources
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formTabla.resources
