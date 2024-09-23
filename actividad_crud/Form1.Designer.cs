@@ -97,6 +97,7 @@
             this.picVer.Size = new System.Drawing.Size(45, 45);
             this.picVer.TabIndex = 11;
             this.picVer.TabStop = false;
+            this.picVer.Click += new System.EventHandler(this.picVer_Click);
             // 
             // picBorrar
             // 
@@ -107,6 +108,7 @@
             this.picBorrar.Size = new System.Drawing.Size(45, 45);
             this.picBorrar.TabIndex = 8;
             this.picBorrar.TabStop = false;
+            this.picBorrar.Click += new System.EventHandler(this.picBorrar_Click);
             // 
             // picEditar
             // 
@@ -117,6 +119,7 @@
             this.picEditar.Size = new System.Drawing.Size(45, 45);
             this.picEditar.TabIndex = 6;
             this.picEditar.TabStop = false;
+            this.picEditar.Click += new System.EventHandler(this.picEditar_Click);
             // 
             // picAgregar
             // 
@@ -127,6 +130,7 @@
             this.picAgregar.Size = new System.Drawing.Size(45, 45);
             this.picAgregar.TabIndex = 1;
             this.picAgregar.TabStop = false;
+            this.picAgregar.Click += new System.EventHandler(this.picAgregar_Click);
             // 
             // pictureBox1
             // 

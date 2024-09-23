@@ -42,5 +42,32 @@ namespace actividad_crud
 
             click = !click;
         }
+
+        private void picAgregar_Click(object sender, EventArgs e)
+        {
+            formAgregar aux = new formAgregar();
+            aux.Show();
+            this.Hide();
+        }
+
+        private void picEditar_Click(object sender, EventArgs e)
+        {
+            formEditar aux = new formEditar();
+            aux.Show();
+            this.Hide();
+        }
+
+        private void picBorrar_Click(object sender, EventArgs e)
+        {
+            formBorrar aux = new formBorrar();
+            aux.Show();
+            this.Hide();
+        }
+
+        private void picVer_Click(object sender, EventArgs e)
+        {
+            formTabla aux = new formTabla();
+            aux.Show();
+        }
     }
 }

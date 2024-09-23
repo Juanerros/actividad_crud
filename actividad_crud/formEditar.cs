@@ -1,4 +1,5 @@
-﻿using System;
+﻿using capa_datos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,20 @@ namespace actividad_crud
             Form1 aux = new Form1();
             aux.Show();
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            crud editar = new crud();
+            try
+            {
+                editar.edit(int.Parse(tboxId.Text), tboxNombre.Text, int.Parse(tboxStock.Text), float.Parse(tboxPrecio.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la consulta " + ex.ToString());
+            }
+            MessageBox.Show("Producto editado");
         }
     }
 }

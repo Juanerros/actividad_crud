@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.IO;
 
 
 namespace capa_datos
 {
     public class conexion : IDisposable
     {
-        SqlConnection path = new SqlConnection("Data Source=CUANNET\\SQLEXPRESS;Initial Catalog=ferreteria2;Integrated Security=True;Encrypt=False");
+
+        SqlConnection path = new SqlConnection("Data Source = CUANNET\\SQLEXPRESS;Initial Catalog = ferreteria2; Integrated Security = True; Encrypt=False");
 
         public SqlConnection conect()
         {
@@ -24,6 +26,11 @@ namespace capa_datos
         public void Dispose()
         {
             path.Close();
+        }
+
+        public void getConStatus()
+        {
+            Console.WriteLine(path.State);
         }
     }
 }

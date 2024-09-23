@@ -12,42 +12,95 @@ namespace capa_datos
 {
     public class crud
     {
-        conexion cn = new conexion();
-        SqlConnection con;
         SqlCommand cmd = new SqlCommand();
 
-        public void logear(string usu, string clave)
+        public void register(string usu, string clave, string nom, string tipo)
         {
-            cmd.Connection = cn.conect();
-            cmd.CommandText = "logear";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@usuario", usu);
-            cmd.Parameters.AddWithValue("@clave", clave);
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
+            using (conexion cn = new conexion())
+            {
+                cmd.Connection = cn.conect();
+                cmd.CommandText = "registrar";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@usuario", usu);
+                cmd.Parameters.AddWithValue("@clave", clave);
+                cmd.Parameters.AddWithValue("@nombre", nom);
+                cmd.Parameters.AddWithValue("@tipo", tipo);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
 
+                cmd.Connection.Close();
+            }
+        }
+
+        public string login(string usu, string clave)
+        {
+            string tipoUsuario;
+
+            using (conexion cn = new conexion())
+            {
+                SqlCommand cmd = new SqlCommand("logear", cn.conect());
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@usuario", usu);
+                cmd.Parameters.AddWithValue("@clave", clave);
+
+                try
+                {
+                    cn.conect();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read()) tipoUsuario = reader["tipo"].ToString();
+                        else tipoUsuario = "Usuario y/o clave incorrecto/s";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    tipoUsuario = "Error: " + ex.Message;
+                }
+            }
+
+            cmd.Parameters.Clear();
             cmd.Connection.Close();
+            return tipoUsuario;
+
+            //using (conexion cn = new conexion())
+            //{
+            //    cmd.Connection = cn.conect();
+            //    cmd.CommandText = "logear";
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Parameters.AddWithValue("@usuario", usu);
+            //    cmd.Parameters.AddWithValue("@clave", clave);
+            //    cmd.ExecuteNonQuery();
+            //    cmd.Parameters.Clear();
+
+            //    cmd.Connection.Close();
+            //}
         }
 
         public void create(string nom, int stock, float precio)
         {
-            cmd.Connection = cn.conect();
-            cmd.CommandText = "insertar";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@nombre", nom);
-            cmd.Parameters.AddWithValue("@stock", stock);
-            cmd.Parameters.AddWithValue("@precio", precio);
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
+            using(conexion cn = new conexion())
+            {
+                cmd.Connection = cn.conect();
 
-            cmd.Connection.Close();
+                cmd.CommandText = "insertar";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombre", nom);
+                cmd.Parameters.AddWithValue("@stock", stock);
+                cmd.Parameters.AddWithValue("@precio", precio);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+
+                cmd.Connection.Close();
+            }   
         }
 
         public void edit(int id, string nom, int stock, float precio)
         {
-            using(con = cn.conect())
+            using(conexion cn = new conexion())
             {
-                cmd.Connection = con;
+                cmd.Connection = cn.conect();
 
                 cmd.CommandText = "editar";
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -64,14 +117,18 @@ namespace capa_datos
 
         public void delete(int id)
         {
-            cmd.Connection = cn.conect();
-            cmd.CommandText = "borrar";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id_producto", id);
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
+            using (conexion cn = new conexion())
+            {
+                cmd.Connection = cn.conect();
 
-            cmd.Connection.Close();
+                cmd.CommandText = "borrar";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_producto", id);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+
+                cmd.Connection.Close();
+            }
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using capa_datos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,20 @@ namespace actividad_crud
             Form1 aux = new Form1();
             aux.Show();
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            crud borrar = new crud();
+            try
+            {
+                borrar.delete(int.Parse(tboxId.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la consulta " + ex.ToString());
+            }
+            MessageBox.Show("Producto borrado");
         }
     }
 }

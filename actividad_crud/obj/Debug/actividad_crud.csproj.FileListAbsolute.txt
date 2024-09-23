@@ -12,3 +12,8 @@ C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_cr
 C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formBorrar.resources
 C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formEditar.resources
 C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formTabla.resources
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\bin\Debug\capa_datos.dll
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\bin\Debug\capa_datos.pdb
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\activida.6440851E.Up2Date
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formLogin.resources
+C:\Users\juanc\source\repos\actividad_crud\actividad_crud\obj\Debug\actividad_crud.formRegistrar.resources

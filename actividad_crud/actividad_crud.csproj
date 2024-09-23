@@ -76,6 +76,12 @@
     <Compile Include="formLogin.Designer.cs">
       <DependentUpon>formLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="formRegistrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formRegistrar.Designer.cs">
+      <DependentUpon>formRegistrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="formTabla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formEditar.resx">
       <DependentUpon>formEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLogin.resx">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formRegistrar.resx">
+      <DependentUpon>formRegistrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formTabla.resx">
       <DependentUpon>formTabla.cs</DependentUpon>
@@ -124,6 +136,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\gato.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\capa_datos\capa_datos.csproj">
+      <Project>{9034fae7-3e0d-41c6-bd46-252434f15678}</Project>
+      <Name>capa_datos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

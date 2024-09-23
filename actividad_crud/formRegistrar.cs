@@ -1,5 +1,4 @@
-﻿using capa_datos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +10,9 @@ using System.Windows.Forms;
 
 namespace actividad_crud
 {
-    public partial class formLogin : Form
+    public partial class formRegistrar : Form
     {
-        public formLogin()
+        public formRegistrar()
         {
             InitializeComponent();
         }
@@ -22,25 +21,14 @@ namespace actividad_crud
         {
             tboxUsuario.Clear();
             tboxClave.Clear();
+            tboxNombre.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            formRegistrar aux = new formRegistrar();
+            formLogin aux = new formLogin();
             aux.Show();
             this.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            crud logear = new crud();
-            string tipoUsuario =logear.login(tboxUsuario.Text, tboxClave.Text);
-            if(tipoUsuario == "cliente")
-            {
-                formTabla aux = new formTabla();
-                aux.Show();
-                this.Close();
-            }
         }
     }
 }
