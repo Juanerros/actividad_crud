@@ -13,6 +13,7 @@ namespace actividad_crud
 {
     public partial class formLogin : Form
     {
+        string tipoUsuario;
         public formLogin()
         {
             InitializeComponent();
@@ -28,19 +29,29 @@ namespace actividad_crud
         {
             formRegistrar aux = new formRegistrar();
             aux.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             crud logear = new crud();
-            string tipoUsuario =logear.login(tboxUsuario.Text, tboxClave.Text);
-            if(tipoUsuario == "cliente")
+            tipoUsuario =logear.login(tboxUsuario.Text, tboxClave.Text);
+
+            switch (tipoUsuario)
             {
-                formTabla aux = new formTabla();
-                aux.Show();
-                this.Close();
+                case "admin":
+                    Form1 aux = new Form1();
+                    aux.Show();
+                    break;
+                case "cliente":
+                    formTabla aux2 = new formTabla();
+                    aux2.Show();
+                    break;
+                default:
+                    MessageBox.Show(tipoUsuario);
+                    break;
             }
+            this.Hide();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace capa_datos
     public class crud
     {
         SqlCommand cmd = new SqlCommand();
+        string connectionString = "Data Source=CUANNET\\SQLEXPRESS;Initial Catalog=ferreteria2;Integrated Security=True;Encrypt=False";
 
         public void register(string usu, string clave, string nom, string tipo)
         {
@@ -36,9 +37,9 @@ namespace capa_datos
         {
             string tipoUsuario;
 
-            using (conexion cn = new conexion())
+            using (SqlConnection cn = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("logear", cn.conect());
+                SqlCommand cmd = new SqlCommand("logear", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@usuario", usu);
@@ -46,7 +47,7 @@ namespace capa_datos
 
                 try
                 {
-                    cn.conect();
+                    cn.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -61,7 +62,6 @@ namespace capa_datos
             }
 
             cmd.Parameters.Clear();
-            cmd.Connection.Close();
             return tipoUsuario;
 
             //using (conexion cn = new conexion())

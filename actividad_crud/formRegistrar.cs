@@ -1,4 +1,5 @@
-﻿using System;
+﻿using capa_datos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,20 @@ namespace actividad_crud
             formLogin aux = new formLogin();
             aux.Show();
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            crud registrar = new crud();
+            try
+            {
+                registrar.register(tboxUsuario.Text, tboxClave.Text, tboxNombre.Text, "cliente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex.ToString());                
+            }
+            MessageBox.Show("registrardo");
         }
     }
 }
