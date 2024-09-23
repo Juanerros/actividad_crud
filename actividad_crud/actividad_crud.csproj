@@ -143,5 +143,29 @@
       <Name>capa_datos</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supermercado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lapiz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabla-de-datos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simple_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seguir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quitar-usuario.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

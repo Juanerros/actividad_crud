@@ -22,6 +22,8 @@ namespace actividad_crud
             InitializeComponent();
             pics = new List<PictureBox> { picAgregar, picBorrar, picEditar, picVer };
             labels = new List<Label> { txtAgregar, txtBorrar, txtEditar, txtVer };
+            foreach (PictureBox pic in pics) pic.Visible = false;
+            foreach (Label label in labels) label.Visible = false;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -31,14 +33,8 @@ namespace actividad_crud
 
         public void vistaItems(List<PictureBox> imgs, List<Label> txts)
         {
-            foreach (PictureBox img in imgs)
-            {
-                img.Enabled = click;
-            }
-            foreach (Label txt in txts)
-            {
-                txt.Enabled = click;
-            }
+            foreach (PictureBox img in imgs) img.Visible= click;
+            foreach (Label txt in txts) txt.Visible = click;
 
             click = !click;
         }
@@ -69,5 +65,13 @@ namespace actividad_crud
             formTabla aux = new formTabla();
             aux.Show();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            formLogin aux = new formLogin();
+            aux.Show();
+            this.Hide();
+        }
+
     }
 }

@@ -7,23 +7,37 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace capa_datos
 {
     public class crud
     {
+        string hash;
         SqlCommand cmd = new SqlCommand();
         string connectionString = "Data Source=CUANNET\\SQLEXPRESS;Initial Catalog=ferreteria2;Integrated Security=True;Encrypt=False";
 
+        public static string getHash(string str)
+        {
+            SHA256 sha256 = SHA256.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = sha256.ComputeHash(encoding.GetBytes(str));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
+        }
+
         public void register(string usu, string clave, string nom, string tipo)
         {
+            hash = getHash(clave);
             using (conexion cn = new conexion())
             {
                 cmd.Connection = cn.conect();
                 cmd.CommandText = "registrar";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@usuario", usu);
-                cmd.Parameters.AddWithValue("@clave", clave);
+                cmd.Parameters.AddWithValue("@clave", hash);
                 cmd.Parameters.AddWithValue("@nombre", nom);
                 cmd.Parameters.AddWithValue("@tipo", tipo);
                 cmd.ExecuteNonQuery();
@@ -36,6 +50,7 @@ namespace capa_datos
         public string login(string usu, string clave)
         {
             string tipoUsuario;
+            hash = getHash(clave);
 
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
@@ -43,7 +58,7 @@ namespace capa_datos
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@usuario", usu);
-                cmd.Parameters.AddWithValue("@clave", clave);
+                cmd.Parameters.AddWithValue("@clave", hash);
 
                 try
                 {
@@ -63,19 +78,6 @@ namespace capa_datos
 
             cmd.Parameters.Clear();
             return tipoUsuario;
-
-            //using (conexion cn = new conexion())
-            //{
-            //    cmd.Connection = cn.conect();
-            //    cmd.CommandText = "logear";
-            //    cmd.CommandType = CommandType.StoredProcedure;
-            //    cmd.Parameters.AddWithValue("@usuario", usu);
-            //    cmd.Parameters.AddWithValue("@clave", clave);
-            //    cmd.ExecuteNonQuery();
-            //    cmd.Parameters.Clear();
-
-            //    cmd.Connection.Close();
-            //}
         }
 
         public void create(string nom, int stock, float precio)

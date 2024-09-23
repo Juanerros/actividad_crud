@@ -74,6 +74,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabla);
             this.Name = "formTabla";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "formTabla";
             this.Load += new System.EventHandler(this.formTabla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).EndInit();
